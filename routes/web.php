@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,38 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//aqui uma route é a mesma coisa que uma página nova, a pagina home
-Route::get('/', function () {
 
-    $nome = "VARIAVEL";
-    $idade = 32;
-    $profissao = 'Programador';
-
-    $arr = [551, 02, 03, 04, 05];
-
-    $nomes = ['tiago', 'rodrigo', 'gomes', 'lima'];
-
-    return view('welcome', 
-            ['nome' => $nome, 
-            'idade' => $idade, 
-            'profissao' => $profissao,
-            'arr' => $arr,
-            'nomes' => $nomes
-            ]);
-});
-
-//aqui uma route é a mesma coisa que uma página nova, a pagina contact
-Route::get('/contact', function () { 
+Route::get('/', [EventController::class, 'index']);//aqui uma route é a mesma coisa que uma página nova, a pagina home index para mostrar todos os registros.
+Route::get('/events/create', [EventController::class, 'create']);/* aqui para mostrar o formulario, criar o um registro no banco. */
+Route::get('/events/{id}', [EventController::class, 'show']);/* aqui serve para mostrar um dado especifico.  */
+Route::post('/events', [EventController::class, 'store']);/* Aqui cria uma rota de POST, para enviar o dado do banco */
+Route::get('/contact', function () {//aqui uma route é a mesma coisa que uma página nova, a pagina contact
     return view('contact');
-});
-
-Route::get('/produtos', function () {
-
-    $busca = request('search');//isso é pra quando for buscar um produto
-
-    return view('produtos', ['busca' => $busca]);
-});
-
-Route::get('/produtos/{id}', function ($id = null) {
-    return view('product', ['id' => $id] );
 });
