@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title><?php echo $__env->yieldContent('title'); ?> </title> 
+        <title><?php echo $__env->yieldContent('title'); ?></title> 
         
         
         <!--Fonte do Google -->
@@ -39,16 +39,7 @@
                   </div>  
                 </nav>
             </header>
-        <main>
-            <div class="container-fluid">
-                <div class="row">
-                <?php if(session('msg')): ?>
-                <p class="msg"> <?php echo e(session('msg')); ?> </p>
-                <?php endif; ?>
-                <?php echo $__env->yieldContent('content'); ?><!-- EXTENDE PARA OUTRA PAGINA -->
-                </div>
-            </div>
-        </main>
+        <?php echo $__env->yieldContent('content'); ?><!-- EXTENDE PARA OUTRA PAGINA -->
 
 
         <!-- RODAPE -->
@@ -61,4 +52,4 @@
         <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
         </body>
-</html><?php /**PATH C:\Users\Desenvolvedores GM\Desktop\Golmoney\hdcevents\resources\views/layouts/main.blade.php ENDPATH**/ ?>
+</html><?php /**PATH D:\Diversos\ruffs Desenvolvedor\Golmoney\hdcevents\resources\views/layouts/main.blade.php ENDPATH**/ ?>

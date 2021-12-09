@@ -1,34 +1,37 @@
 <?php $__env->startSection('title', 'HDC Events'); ?>
 
 <?php $__env->startSection('content'); ?>
-        
-        <h1>TESTE H1</h1>
-        <?php if(10 > 15): ?>
-            <p><?php echo 'LIMA' ?></p>
-        <?php elseif($nome == 'VARIAVEL'): ?><!-- se não, se nome for igual a variavel -->
-            <p>O nome é <?php echo e($nome); ?> e tem <?php echo e($idade); ?> de idade e trabalha com <?php echo e($profissao); ?></p>    
-        <?php else: ?>                
-            <p><?php echo 'RODRIGO' ?></p>
-        <?php endif; ?>
-        
-        <?php for($i = 0; $i < count($arr); $i++): ?>
-        <p> <?php echo e($arr [$i]); ?>- <?php echo e($i); ?> </p>
-        <?php if($i == 2): ?>
-        <p>blz</p>
-        <?php endif; ?>
-        <?php endfor; ?>
 
-        <?php
-    
-            $name = "JOAO e MARIA";
-            echo $name
-        ?>
 
-        <?php $__currentLoopData = $nomes; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $nome): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <p><?php echo e($loop->index); ?> - <?php echo e($nome); ?></p>            
-            <p><?php echo e($nome); ?></p>
+<div id="search-containar" class="col-md-12">
+    <h1>Busque um evento</h1>
+    <form action="">
+        <input type="text" id="search" name="search" class="form-control" placeholder="Procurar">
+    </form>
+</div>
+
+<div id="event-container" class="col-md-12">
+    <h2 class="subtitulo">Próximos Eventos</h2>
+    <p>Veja os eventos dos próximos dias</p>
+    <!--Div para os cards.  --> <!-- Div para preencher 4 cards por linha -->
+    <div id="cards-container" class="row">
+        <?php $__currentLoopData = $events; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $event): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <div class="card col-md-12"><!-- DIV GERAL DOS CARDS EVENTOS -->
+            <!--Aqui eu pego a imagem que a pessoa que cria o evento envia...  -->
+            <img src="/img/events/<?php echo e($event->image); ?>" alt="<?php echo e($event->title); ?>">
+            <div class="card-body"><!-- DIV CARD EVENTOS -->
+                <p class="card-date">05/12/2021</p>
+                <h5 class="card-title"><?php echo e($event->title); ?></h5>
+                <p class="card-participantes">X Participantes</p>
+                <a href="/events/<?php echo e($event->id); ?>" class="btn btn-primary">Saber Mais</a>
+                <a href="/" class="btn btn-primary" id="ing">INGRESSOS</a>
+            </div>
+        </div>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+    </div>
+</div>
+
+
 
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\Desenvolvedores GM\Desktop\Golmoney\hdcevents\resources\views/welcome.blade.php ENDPATH**/ ?>

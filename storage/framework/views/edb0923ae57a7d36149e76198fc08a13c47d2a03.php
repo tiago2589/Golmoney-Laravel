@@ -4,7 +4,8 @@
 
 
 <h1>CONTATO</h1>
-<a href="/produtos">Voltar para home</a>
+<a href="/">Voltar para home</a>
+
 
 
 <?php $__env->stopSection(); ?>
